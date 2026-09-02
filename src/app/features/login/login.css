@@ -1,0 +1,152 @@
+.tela-login-completa {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #F4F7FC;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-header {
+    background-color: #0B195C;
+    color: white;
+    padding: 22px 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.login-header h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.login-header .logo-img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    background: transparent;
+}
+
+.texto-biblio {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.texto-tech {
+    color: #00bfff;
+    font-size: bold;
+}
+
+.login-principal {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.login-features {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 30px;
+    background-color: transparent;
+    z-index: 10;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.feature .material-symbols-outlined {
+    color: #0B195C;
+    font-size: 32px;
+}
+
+.feature-text strong {
+    display: block;
+    color: #0B195C;
+    font-size: 15px;
+}
+
+.feature-text p {
+    font-size: 12px;
+    color: #667;
+    margin-top: 2px;
+}
+
+.login-card {
+    background-color: #0B195C;
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0px 10px 30px rgba(0,0,0, 0.15);
+    display: flex;
+    flex-direction: column;
+
+}
+
+.login-card h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+
+}
+
+.input-grupo  {
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 20px;
+}
+
+.input-grupo label{
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.input-grupo input {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    color: #333;
+
+}
+
+.forgot-password {
+    color: #d1d5db;
+    text-align: center;
+    font-size: 13px;
+    text-decoration: underline;
+    margin-bottom: 25px;
+}
+
+.btn-entrar {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-entrar:hover {
+    background-color: #004494;
+}
+
+
