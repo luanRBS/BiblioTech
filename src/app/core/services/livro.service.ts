@@ -6,6 +6,7 @@ export interface Livro {
   nome: string;
   reserva: boolean;
   categoria: string;
+  image: string;
   
 }
 
@@ -15,11 +16,39 @@ providedIn: 'root'
 
 export class livrosService{
 
-    private livroAtual = signal<Livro[]>([]);
+    private livroAtual = signal<Livro[]>([ {
+      autor: "Aditya Y. Bhargava",
+      nome: 'Entendendo algoritmos',
+      reserva: false,
+      categoria: "TI",
+      image: "img/algoritmos.jpg",
+    },
+    {
+      autor: "John Allspaw",
+      nome: "Manual de DevOps",
+      reserva: false,
+      categoria: "TI",
+      image: "img/devops.jpg"
+    },
+    {
+      autor: "Daniel Schmitz",
+      nome: " Angular 17 do Zero",
+      reserva: false,
+      categoria: "TI",
+      image: "img/angular.jpg"
+    },
+    {
+      autor: "Aditya Y. Bhargava",
+      nome: "TI - Tec. Da Informação",
+      reserva: false,
+      categoria: "TI",
+      image: "img/ti.jpg"
+    }
+    ]);
 
-    readonly livros = this.livroAtual.asReadonly;
+    readonly livros = this.livroAtual.asReadonly();
 
-    readonly meusLivros = computed(() => (this.livroAtual().filter(l => l.reserva)))
+    readonly meusLivros = computed(() => this.livroAtual().filter(l => l.reserva));
 
 
     //--- função para adicionar o livro 

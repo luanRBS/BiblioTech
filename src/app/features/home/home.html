@@ -99,9 +99,22 @@
             </section>
 
             <!-- SEÇÃO LIVROS EM DESTAQUES -->
+
             <section class="highlights-section">
                 <h2>Livros em Destaques</h2>
                 
+                <!-- Geração dos livros de forma dinamica-->
+                
+                
+                @for (livros of livroService.livros(); track $index) {
+                <div class="books-grid">
+                    <div class="book-card">
+                        <img src="{{livros.image}}" alt="{{livros.nome}}">
+                        <h4>{{livros.nome}}</h4>
+                        <p>{{livros.autor}}</p>
+                    </div>
+                    </div>
+            }
                 <div class="books-grid">
                     <div class="book-card">
                         <img src="img/algoritmos.jpg" alt="Entendendo Algoritmos">
