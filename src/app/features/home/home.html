@@ -43,7 +43,7 @@
                     <span class="material-symbols-outlined">grid_view</span>
                     <span>Categorias</span>
                 </a>
-                <a href="/meuslivros" class="menu-item">
+                <a href="/meus-livros" class="menu-item">
                     <span class="material-symbols-outlined">book_2</span>
                     <span>Meus Livros</span>
                 </a>
@@ -55,7 +55,7 @@
                     <span class="material-symbols-outlined">workspace_premium</span>
                     <span>Desafios</span>
                 </a>
-                <a href="/condigurações" class="menu-item">
+                <a href="configuracoes" class="menu-item">
                     <span class="material-symbols-outlined">settings</span>
                     <span>Configurações</span>
                 </a>
@@ -99,49 +99,55 @@
             </section>
 
             <!-- SEÇÃO LIVROS EM DESTAQUES -->
-
             <section class="highlights-section">
-                <h2>Livros em Destaques</h2>
-                
-                <!-- Geração dos livros de forma dinamica-->
-                
-                
-                @for (livros of livroService.livros(); track $index) {
+                <h2>Livros em Destaques</h2>                
+                <!-- Geração dos livros de forma dinamica / Adição dos modais para poder mostrar mais informações do livro quando clicar no card-->
                 <div class="books-grid">
-                    <div class="book-card">
-                        <img src="{{livros.image}}" alt="{{livros.nome}}">
-                        <h4>{{livros.nome}}</h4>
-                        <p>{{livros.autor}}</p>
-                    </div>
-                    </div>
-            }
-                <div class="books-grid">
-                    <div class="book-card">
-                        <img src="img/algoritmos.jpg" alt="Entendendo Algoritmos">
-                        <h4>Entendendo algoritmos</h4>
-                        <p>Aditya Y. Bhargava</p>
-                    </div>
-
-                    <div class="book-card">
-                        <img src="img/devops.jpg" alt="Manual de DevOps">
-                        <h4>Manual de DevOps</h4>
-                        <p>John Allspaw</p>
-                    </div>
-
-                    <div class="book-card">
-                        <img src="img/angular.jpg" alt="Angular 17 do Zero">
-                        <h4>Angular 17 do Zero</h4>
-                        <p>Daniel Schmitz</p>
-                    </div>
-
-                    <div class="book-card">
-                        <img src="img/ti.jpg" alt="TI - Tec. Da Informação">
-                        <h4>TI - Tec. Da Informação</h4>
-                        <p>Aditya Y. Bhargava</p>
-                    </div>
+                  @for (livro of livroService.livros(); track $index) {
+                    <div class="book-card" (click)="modalService.abrirModalLivro(livro)">
+                      <img src="{{livro.image}}" alt="{{livro.nome}}">
+                      <h4>{{livro.nome}}</h4>
+                      <p>{{livro.autor}}</p>
+                    </div>} 
                 </div>
             </section>
 
+            @if (modalService.isOpen()) {
+                <section class="modal-overlay">
+                      <div class="modal-card" (click)="$event.stopPropagation()">
+                
+                <button class="btn-fechar" (click)="modalService.fecharModal()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+
+                <div class="modal-content">
+                    <img [src]="modalService.livro()?.image" alt="Capa" class="modal-img">
+                 
+                    <div class="modal-info-detalhe">
+                        <h2>{{ modalService.livro()?.nome }}</h2>
+                        <p class="modal-autor">{{ modalService.livro()?.autor }}</p>
+                        
+                            <div class="modal-dados">
+                                @if(modalService.livro()?.reserva === false){
+                                <p><strong>Devolução:</strong> {{ modalService.livro()?.devolucao }}</p>}
+                                    <div class="status-container">
+                                    <strong>Status:</strong> 
+                                        
+                                    <span class="status-badge">
+                                        @if(modalService.livro()?.reserva === false){
+                                            <p class="status-emprestado">Emprestado</p>
+                                        }@else {
+                                        <p class="status-livre">Livre</p>}
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </section>
+
+            }
         </main>
 
     </div>
