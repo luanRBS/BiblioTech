@@ -4,7 +4,10 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-
+.menu-item.active {
+  background-color: #0d47a1 !important;
+  color: #ffffff !important;
+}
 body {
     background-color: #f7f8fc;
 }
