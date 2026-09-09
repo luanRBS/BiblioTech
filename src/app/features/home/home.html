@@ -38,6 +38,38 @@
       </div>
     </div>
   </div>
+    <!-- ESTRUTURA PRINCIPAL -->
+    <div class="main-container">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <span class="material-symbols-outlined">home</span>
+                    <span>Início</span>
+                </a>
+                <a href="/categorias" class="menu-item">
+                    <span class="material-symbols-outlined">grid_view</span>
+                    <span>Categorias</span>
+                </a>
+                <a href="/meus-livros" class="menu-item">
+                    <span class="material-symbols-outlined">book_2</span>
+                    <span>Meus Livros</span>
+                </a>
+                <a href="/perfil" class="menu-item">
+                    <span class="material-symbols-outlined">person</span>
+                    <span>Perfil</span>
+                </a>
+                <a href="/desafios" class="menu-item">
+                    <span class="material-symbols-outlined">workspace_premium</span>
+                    <span>Desafios</span>
+                </a>
+                <a href="configuracoes" class="menu-item">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span>Configurações</span>
+                </a>
+            </nav>
+        </aside>
 
   <div class="header-actions">
     <a href="#" class="action-item">
@@ -153,6 +185,57 @@
         </div>
       </div>
     </section>
+            <!-- SEÇÃO LIVROS EM DESTAQUES -->
+            <section class="highlights-section">
+                <h2>Livros em Destaques</h2>                
+                <!-- Geração dos livros de forma dinamica / Adição dos modais para poder mostrar mais informações do livro quando clicar no card-->
+                <div class="books-grid">
+                  @for (livro of livroService.livros(); track $index) {
+                    <div class="book-card" (click)="modalService.abrirModalLivro(livro)">
+                      <img src="{{livro.image}}" alt="{{livro.nome}}">
+                      <h4>{{livro.nome}}</h4>
+                      <p>{{livro.autor}}</p>
+                    </div>} 
+                </div>
+            </section>
+
+            @if (modalService.isOpen()) {
+                <section class="modal-overlay">
+                      <div class="modal-card" (click)="$event.stopPropagation()">
+                
+                <button class="btn-fechar" (click)="modalService.fecharModal()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+
+                <div class="modal-content">
+                    <img [src]="modalService.livro()?.image" alt="Capa" class="modal-img">
+                 
+                    <div class="modal-info-detalhe">
+                        <h2>{{ modalService.livro()?.nome }}</h2>
+                        <p class="modal-autor">{{ modalService.livro()?.autor }}</p>
+                        
+                            <div class="modal-dados">
+                                @if(modalService.livro()?.reserva === false){
+                                <p><strong>Devolução:</strong> {{ modalService.livro()?.devolucao }}</p>}
+                                    <div class="status-container">
+                                    <strong>Status:</strong> 
+                                        
+                                    <span class="status-badge">
+                                        @if(modalService.livro()?.reserva === false){
+                                            <p class="status-emprestado">Emprestado</p>
+                                        }@else {
+                                        <p class="status-livre">Livre</p>}
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </section>
+
+            }
+        </main>
 
   </main>
 

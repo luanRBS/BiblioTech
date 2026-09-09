@@ -1,4 +1,6 @@
 import { Injectable, signal, computed } from '@angular/core';
+import { addDays, addWeeks } from 'date-fns';
+
 
 
 export interface Livro {
@@ -7,6 +9,7 @@ export interface Livro {
   reserva: boolean;
   categoria: string;
   image: string;
+  devolucao: string;
   
 }
 
@@ -22,27 +25,31 @@ export class livrosService{
       reserva: false,
       categoria: "TI",
       image: "img/algoritmos.jpg",
+      devolucao: this.calcularDevolucao(),
     },
     {
       autor: "John Allspaw",
       nome: "Manual de DevOps",
       reserva: false,
       categoria: "TI",
-      image: "img/devops.jpg"
+      image: "img/devops.jpg",
+      devolucao: this.calcularDevolucao(),
     },
     {
       autor: "Daniel Schmitz",
       nome: " Angular 17 do Zero",
       reserva: false,
       categoria: "TI",
-      image: "img/angular.jpg"
+      image: "img/angular.jpg",
+      devolucao: this.calcularDevolucao(),
     },
     {
       autor: "Aditya Y. Bhargava",
       nome: "TI - Tec. Da Informação",
       reserva: false,
       categoria: "TI",
-      image: "img/ti.jpg"
+      image: "img/ti.jpg",
+      devolucao: this.calcularDevolucao(),
     }
     ]);
 
@@ -61,6 +68,18 @@ export class livrosService{
     this.livroAtual.update(lista =>
       lista.map(l => l.nome === nomeLivro ? { ...l, reserva: !l.reserva } : l)
     );
+  }
+
+ //----Função para calcular a data daqui a 2 semanas
+
+  calcularDevolucao(){
+      const dataHojee = new Date()
+
+       //----calcula do dia da chamada da função para 2 semanas depois
+      const duasSemanas = addWeeks(dataHojee, 2); 
+
+
+    return duasSemanas.toLocaleString('pt-br');
   }
 
 

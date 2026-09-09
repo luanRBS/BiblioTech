@@ -39,6 +39,7 @@ export class ConfiguracoesComponent {
     } else {
       document.body.classList.remove('dark-theme');
     }
+   
   }
   mudarIdioma(event: any) {
     const idiomaSelecionado = event.target.value;

@@ -7,6 +7,9 @@ interface Livro {
   autor: string;
   imagem: string;
 }
+import { Component, inject } from '@angular/core';
+import { livrosService } from '../../core/services/livro.service';
+import { ModalService } from '../../core/services/modal.service';
 
 @Component({
   selector: 'app-home',
@@ -72,4 +75,8 @@ export class HomeComponent {
     this.termoBusca = livro.titulo;
     this.mostrarResultados = false;
   }
+}
+  livroService = inject(livrosService);
+  modalService = inject(ModalService);
+  
 }
