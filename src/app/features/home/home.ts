@@ -1,3 +1,6 @@
+import { Component, inject } from '@angular/core';
+import { livrosService } from '../../core/services/livro.service';
+import { ModalService } from '../../core/services/modal.service';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +22,10 @@ export class HomeComponent {
   termoBusca: string = '';
   mostrarResultados: boolean = false;
 
+  livroService = inject(livrosService);
+  modalService = inject(ModalService);
+  
+}
   livros: Livro[] = [
     { 
       titulo: 'Inteligência Artificial', 
