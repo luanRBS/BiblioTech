@@ -128,7 +128,7 @@
           <div class="book-card" (click)="modalService.abrirModalLivro(livro)">
             <img [src]="livro.image" [alt]="livro.nome">
             <h4>{{livro.nome}}</h4>
-            <p>{{livro.autor}}</p>
+            <span>{{livro.autor}}</span>
           </div>
         } 
       </div>
@@ -150,11 +150,11 @@
      
         <div class="modal-info-detalhe">
           <h2>{{ modalService.livro()?.nome }}</h2>
-          <p class="modal-autor">{{ modalService.livro()?.autor }}</p>
+          <span class="modal-autor">{{ modalService.livro()?.autor }}</span>
           
           <div class="modal-dados">
             @if(modalService.livro()?.reserva === false){
-              <p><strong>Devolução:</strong> {{ modalService.livro()?.devolucao }}</p>
+              <span><strong>Devolução:</strong> {{ modalService.livro()?.devolucao }}</span>
             }
             <div class="status-container">
               <strong>Status:</strong> 

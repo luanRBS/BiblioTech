@@ -356,7 +356,7 @@ h2 {
   line-height: 1.2;
 }
 
-.book-card p {
+.book-card span {
   font-size: 11px;
   color: #777;
   margin-top: 4px;
