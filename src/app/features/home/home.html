@@ -15,7 +15,7 @@
       [(ngModel)]="termoBusca"
       (focus)="exibirResultados()"
       (blur)="esconderResultados()"
-      (keydown.escape)="esconderResultadosClick()"
+      (keydown.escape)="esconderResultadosClick($event)"
     />
     <label for="searchInput">
       <span class="material-symbols-outlined">search</span>

@@ -34,6 +34,7 @@ export class HomeComponent {
 
   exibirResultados() {
     this.mostrarResultados = true;
+    
   }
 
   esconderResultados() {
@@ -41,8 +42,9 @@ export class HomeComponent {
       this.mostrarResultados = false;
     }, 200);}
 
-    esconderResultadosClick(): void{
+    esconderResultadosClick(event: Event){
       this.mostrarResultados = false;
+      (event.target as HTMLElement)?.blur();
     }
 
 
