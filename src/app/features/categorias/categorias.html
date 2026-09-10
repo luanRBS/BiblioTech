@@ -55,25 +55,53 @@
 
       <hr class="divisor">
 
-      <div class="categorias-lista">
-  @for (categoria of categorias; track categoria.nome) {
-    <div class="categoria-secao">
-      <h3 class="nome-categoria">{{ categoria.nome }}</h3>
-      
-      <div class="livros-grid">
-        @for (livro of categoria.livros; track livro.id) {
-          <div class="card-livro">
-            <div class="capa-container">
-              <img [src]="livro.capa" [alt]="livro.titulo" class="capa-livro">
+            <div class="categorias-lista">
+                 <div class="categoria-secao">
+                <h3 class="nome-categoria">Tecnologia & Programação</h3>
+                <div class="livros-grid">
+                    @for (Livro of categoriaFiltrar('Tecnologia & Programação'); track Livro.nome) {
+                        <div class="card-livro">
+                            <div class="capa-container">
+                                <img [src]="Livro.image" [alt]="Livro.nome" class="capa-livro">
+                            </div>
+                            <h4 class="título-livro">{{ Livro.nome }}</h4>
+                            <span class="autor-livro">{{ Livro.autor }}</span>
+                        </div>
+                    }
+                </div>
             </div>
-            <h4 class="titulo-livro">{{ livro.titulo }}</h4>
-            <p class="autor-livro">{{ livro.autor }}</p>
-          </div>
-        }
-      </div>
-    </div>
-  }
-</div>
-    </div>
-  </main>
+
+            <!-- SEÇÃO 2: DEVOPS & INFRAESTRUTURA -->
+            <div class="categoria-secao">
+                <h3 class="nome-categoria">Devops & Infraestrutura</h3>
+                <div class="livros-grid">
+                    @for (Livro of categoriaFiltrar('Devops & Infraestrutura'); track Livro.nome) {
+                        <div class="card-livro">
+                            <div class="capa-container">
+                                <img [src]="Livro.image" [alt]="Livro.nome" class="capa-livro">
+                            </div>
+                            <h4 class="título-livro">{{ Livro.nome }}</h4>
+                            <span class="autor-livro">{{ Livro.autor }}</span>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- SEÇÃO 3: INTELIGÊNCIA ARTIFICIAL -->
+            <div class="categoria-secao">
+                <h3 class="nome-categoria">Inteligência Artificial</h3>
+                <div class="livros-grid">
+                    @for (Livro of categoriaFiltrar('Inteligência Artificial'); track Livro.nome) {
+                        <div class="card-livro">
+                            <div class="capa-container">
+                                <img [src]="Livro.image" [alt]="Livro.nome" class="capa-livro">
+                            </div>
+                            <h4 class="título-livro">{{ Livro.nome }}</h4>
+                            <span class="autor-livro">{{ Livro.autor }}</span>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    
 </div>

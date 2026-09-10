@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { livrosService } from '../../core/services/livro.service';
 
 @Component({
   selector: 'app-categorias',
@@ -9,8 +11,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './categorias.css'
 })
 export class CategoriasComponent {
-  // Array simples com as categorias e seus respectivos livros
-  categorias = [
+
+  livroService =  inject(livrosService);
+  
+  categoriass: Categoria[] = [
     {
       nome: 'Tecnologia & Programação',
       livros: [
@@ -32,4 +36,9 @@ export class CategoriasComponent {
       ]
     }
   ];
+
+
+  categoriaFiltrar(categoriaNome: string){
+    let filtrado = this.livroService.livros().filter(livro => livro.categoria === categoriaNome)  
+    return filtrado;}
 }

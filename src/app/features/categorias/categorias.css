@@ -75,14 +75,18 @@
     padding-left: 10px;
 }
 
+
 .livros-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+
     gap: 20px;
 }
 
+
 .card-livro {
-    width: 140px;
+    width: 100%; 
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -93,6 +97,7 @@
 .card-livro:hover {
     transform: translateY(-4px);
 }
+
 
 .capa-container {
     width: 100%;
