@@ -1,76 +1,79 @@
 <header class="header">
-    <div class="logo-container">
-        <img src="img/logo.png" alt="Logo BiblioTech" class="logo-img">
-        <h1>
-            <span class="texto-biblio">Biblio</span><span class="texto-tech">Tech</span>
-        </h1>
-    </div>
-    <div class="search">
-        <input type="text" id="searchInput" placeholder="Pesquisar Livros">
-        <label for="searchInput"><span class="material-symbols-outlined">search</span></label>
-    </div>
-    <div class="header-actions">
-        <a href="#" class="action-item"><span class="material-symbols-outlined">favorite</span><span>Favoritos</span></a>
-        <a href="#" class="action-item"><span class="material-symbols-outlined">notifications</span><span>Notificação</span></a>
-        <a href="#" class="action-item account-icon"><span class="material-symbols-outlined">account_circle</span></a>
-    </div>
+  <div class="logo-container">
+    <img src="img/logo.png" alt="Logo BiblioTech" class="logo-img">
+    <h1>
+      <span class="texto-biblio">Biblio</span><span class="texto-tech">Tech</span>
+    </h1>
+  </div>
+  <div class="search">
+    <input type="text" id="searchInput" placeholder="Pesquisar Livros">
+    <label for="searchInput"><span class="material-symbols-outlined">search</span></label>
+  </div>
+  <div class="header-actions">
+    <a href="#" class="action-item"><span class="material-symbols-outlined">favorite</span>Favoritos</a>
+    <a href="#" class="action-item"><span class="material-symbols-outlined">notifications</span>Notificações</a>
+    <a href="#" class="action-item account-icon"><span class="material-symbols-outlined">account_circle</span></a>
+  </div>
 </header>
 
 <div class="main-container">
-    <aside class="sidebar">
-        <nav class="sidebar-menu">
-            <a routerLink="/home" class="menu-item">
-                <span class="material-symbols-outlined">home</span>
-                <span>Início</span>
-            </a>
-            <a routerLink="/categorias" class="menu-item active">
-                <span class="material-symbols-outlined">grid_view</span>
-                <span>Categorias</span>
-            </a>
-            <a routerLink="/meus-livros" class="menu-item">
-                <span class="material-symbols-outlined">book_2</span>
-                <span>Meus Livros</span>
-            </a>
-            <a routerLink="/perfil" class="menu-item">
-                <span class="material-symbols-outlined">person</span>
-                <span>Perfil</span>
-            </a>
-            <a routerLink="/desafios" class="menu-item">
-                <span class="material-symbols-outlined">workspace_premium</span>
-                <span>Desafios</span>
-            </a>
-            <a routerLink="/configuracoes" class="menu-item">
-                <span class="material-symbols-outlined">settings</span>
-                <span>Configurações</span>
-            </a>
-        </nav>
-    </aside>
+  <aside class="sidebar">
+    <nav class="sidebar-menu">
+      <a routerLink="/home" class="menu-item">
+        <span class="material-symbols-outlined">home</span>
+        <span>Início</span>
+      </a>
+      <a routerLink="/categorias" class="menu-item active">
+        <span class="material-symbols-outlined">grid_view</span>
+        <span>Categorias</span>
+      </a>
+      <a routerLink="/meus-livros" class="menu-item">
+        <span class="material-symbols-outlined">book_2</span>
+        <span>Meus Livros</span>
+      </a>
+      <a routerLink="/perfil" class="menu-item">
+        <span class="material-symbols-outlined">person</span>
+        <span>Perfil</span>
+      </a>
+      <a routerLink="/desafios" class="menu-item">
+        <span class="material-symbols-outlined">workspace_premium</span>
+        <span>Desafios</span>
+      </a>
+      <a routerLink="/configuracoes" class="menu-item">
+        <span class="material-symbols-outlined">settings</span>
+        <span>Configurações</span>
+      </a>
+    </nav>
+  </aside>
 
-    <main class="content">
-        <div class="category-card">
-            <div class="category-header">
-                <span class="material-symbols-outlined header-icon">grid_view</span>
-                <h2 class="category-title">CATEGORIAS</h2>
+  <main class="content">
+    <div class="category-card">
+      <div class="category-header">
+        <span class="material-symbols-outlined header-icon">grid_view</span>
+        <h2 class="category-title">CATEGORIAS</h2>
+      </div>
+
+      <hr class="divisor">
+
+      <div class="categorias-lista">
+  @for (categoria of categorias; track categoria.nome) {
+    <div class="categoria-secao">
+      <h3 class="nome-categoria">{{ categoria.nome }}</h3>
+      
+      <div class="livros-grid">
+        @for (livro of categoria.livros; track livro.id) {
+          <div class="card-livro">
+            <div class="capa-container">
+              <img [src]="livro.capa" [alt]="livro.titulo" class="capa-livro">
             </div>
-
-            <hr class="divisor">
-
-            <div class="categorias-lista">
-                <div *ngFor="let categoria of categorias" class="categoria-secao">
-                    <h3 class="nome-categoria">{{ categoria.nome }}</h3>
-                    
-                    <div class="livros-grid">
-                        <div *ngFor="let livro of categoria.livros" class="card-livro">
-                            <div class="capa-container">
-                                <img [src]="livro.capa" [alt]="livro.titulo" class="capa-livro">
-                            </div>
-                            <h4 class="titulo-livro">{{ livro.titulo }}</h4>
-                            <p class="autor-livro">{{ livro.autor }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </main>
+            <h4 class="titulo-livro">{{ livro.titulo }}</h4>
+            <p class="autor-livro">{{ livro.autor }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>
+    </div>
+  </main>
 </div>

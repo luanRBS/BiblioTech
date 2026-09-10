@@ -1,28 +1,16 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-
-interface Livro {
-  id: number;
-  titulo: string;
-  autor: string;
-  capa: string;
-}
-
-interface Categoria {
-  nome: string;
-  livros: Livro[];
-}
 
 @Component({
   selector: 'app-categorias',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink],
   templateUrl: './categorias.html',
-  styleUrl: './categorias.css',
+  styleUrl: './categorias.css'
 })
 export class CategoriasComponent {
-  categorias: Categoria[] = [
+  // Array simples com as categorias e seus respectivos livros
+  categorias = [
     {
       nome: 'Tecnologia & Programação',
       livros: [
@@ -34,7 +22,7 @@ export class CategoriasComponent {
     {
       nome: 'Inteligência Artificial',
       livros: [
-        { id: 4, titulo: 'Inteligência Artificial', autor: 'Kai-Fu LEE', capa: 'img/ia.jpg' }
+        { id: 4, titulo: 'Inteligência Artificial', autor: 'Kai-Fu Lee', capa: 'img/ia.jpg' }
       ]
     },
     {
