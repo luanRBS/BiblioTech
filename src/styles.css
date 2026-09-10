@@ -12,7 +12,6 @@ body {
     background-color: #f7f8fc;
 }
 
-
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -22,8 +21,6 @@ body {
     align-items: center;
     z-index: 9999; 
 }
-
-
 
 .modal-card {
     background-color: #ffffff;
@@ -85,3 +82,122 @@ body {
 
 .status-entregue, .status-livre { background-color: #007bff; } 
 .status-emprestado { background-color: #ff9800; } 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f7f8fc;
+}
+
+/* Dark Mode Tconfig */
+
+body.dark-theme .big-gear{
+    background-color: #121212;
+}
+
+body.dark-theme {
+    background-color: #121212;
+    transition: background-color 0.3s;
+}
+
+body.dark-theme .settings-card,body.dark-theme .sidebar {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+body.dark-theme .settings-title,
+body.dark-theme .config-text,
+body.dark-theme .menu-item {
+    color: #ffffff;
+}
+
+body.dark-theme .config-info .material-symbols-outlined,
+body.dark-theme .menu-item .material-symbols-outlined{
+    color: #00bfff;
+}
+
+/* Dark Mode TCategorias */
+body.dark-theme .category-card {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+body.dark-theme .category-title {
+    color: #ffffff;
+}
+
+body.dark-theme .category-card .divisor {
+    border-top: 1px solid #333;
+}
+
+/* Dark Mode TMeus-Livros */
+body.dark-theme .livros-section h3 {
+    color: #ffffff;
+}
+
+body.dark-theme .livro-card {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme .livro-info h4 {
+    color: #ffffff;
+}
+
+body.dark-theme .livro-info p {
+    color: #aaaaaa;
+}
+
+body.dark-theme .livro-info h3 {
+    color: #f7f8fc;
+}
+
+
+/* Dark Mode TMeus-Livros Cont  */
+
+body.dark-theme .modal-card { background-color: #1e1e1e; }
+body.dark-theme .modal-info-detalhe h2,
+body.dark-theme .modal-dados p,
+body.dark-theme .status-container,
+body.dark-theme .btn-fechar { color: #ffffff; }
+body.dark-theme .modal-autor { color: #aaaaaa; }
+
+/* Dark Mode: TDesafio */
+
+body.dark-theme .titulo-sessao h2 { color: #ffffff; }
+body.dark-theme .cartao-desafio-vazio { background-color: #1e1e1e; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); }
+body.dark-theme .icone-medalha { color: #00bfff; }
+
+/* Cor do icone do perfil */
+body.dark-theme .material-symbols-outlined {
+    color: #00bfff;
+}
+
+body.dark-theme .continue-card {
+     background-color: #333333;
+
+}
+
+body.dark-theme .name {
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
