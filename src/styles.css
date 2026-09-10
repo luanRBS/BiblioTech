@@ -66,10 +66,13 @@ body {
 .modal-info-detalhe h2 { font-size: 26px; 
     color: #000; 
     margin: 0 0 5px 0; 
-    background-color: #007bff;
+
     margin-bottom: 200px;
 }
-.modal-autor { font-size: 16px; color: #888; margin: 0 0 40px 0; }
+.modal-autor { 
+    font-size: 16px !important; 
+    color: #888 !important; 
+    margin: -8px 2px 5px 0 !important; }
 
 .modal-dados p { font-size: 16px; color: #333; margin: 10px 0; }
 
