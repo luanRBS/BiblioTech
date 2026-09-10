@@ -1,114 +1,287 @@
 <header class="header">
-    <div class="logo-container">
-        <img src="img/logo.png" alt="Logo BiblioTech" class="logo-img">
-        <h1>
-            <span class="texto-biblio">Biblio</span><span class="texto-tech">Tech</span>
-        </h1>
+  <div class="logo-container">
+    <img src="img/logo.png" alt="Logo BiblioTech" class="logo-img">
+    <h1>
+      <span class="texto-biblio">Biblio</span><span class="texto-tech">Tech</span>
+    </h1>
+  </div>
+
+  <div class="search">
+    <input 
+      type="text" 
+      id="searchInput" 
+      placeholder="Pesquisar Livros"
+      [(ngModel)]="termoBusca"
+      (focus)="exibirResultados()"
+      (blur)="esconderResultados()"
+    />
+    <label for="searchInput">
+      <span class="material-symbols-outlined">search</span>
+    </label>
+
+    <div class="search-resultado" *ngIf="mostrarResultados">
+      <div 
+        class="search-item" 
+        *ngFor="let livro of livrosFiltrados"
+        (click)="selecionarLivro(livro)"
+      >
+        <img [src]="livro.imagem" [alt]="livro.titulo">
+        <div class="search-item-info">
+          <strong>{{ livro.titulo }}</strong>
+          <small>{{ livro.autor }}</small>
+        </div>
+      </div>
+
+      <div class="sem-resultados" *ngIf="livrosFiltrados.length === 0">
+        Nenhum livro encontrado
+      </div>
     </div>
-    <div class="search">
-        <input type="text" id="searchInput" placeholder="Pesquisar Livros">
-        <label for="searchInput"><span class="material-symbols-outlined">search</span></label>
-    </div>
+  </div>
+
     <div class="header-actions">
-        <a href="#" class="action-item"><span class="material-symbols-outlined">favorite</span><span>Favoritos</span></a>
-        <a href="#" class="action-item"><span class="material-symbols-outlined">notifications</span><span>Notificação</span></a>
-        <a href="#" class="action-item account-icon"><span class="material-symbols-outlined">account_circle</span></a>
+
+        <a href="#" class="action-item">
+            <span class="material-symbols-outlined">favorite</span>
+            <span>Favoritos</span>
+        </a>
+
+        <a href="#" class="action-item">
+            <span class="material-symbols-outlined">notifications</span>
+            <span>Notificação</span>
+        </a>
+
+        <a href="#" class="action-item account-icon">
+            <span class="material-symbols-outlined">account_circle</span>
+        </a>
+
     </div>
+
 </header>
 
+
 <div class="main-container">
-    
-         <aside class="sidebar">
-            <nav class="sidebar-menu">
-                <a routerLink="/home" class="menu-item">
-                    <span class="material-symbols-outlined">home</span>
-                    <span>Início</span>
-                </a>
-                <a routerLink="/categorias" class="menu-item">
-                    <span class="material-symbols-outlined">grid_view</span>
-                    <span>Categorias</span>
-                </a>
-                <a routerLink="/meus-livros" class="menu-item">
-                    <span class="material-symbols-outlined">book_2</span>
-                    <span>Meus Livros</span>
-                </a>
-                <a routerLink="/perfil" class="menu-item">
-                    <span class="material-symbols-outlined">person</span>
-                    <span>Perfil</span>
-                </a>
-                <a routerLink="/desafios" class="menu-item">
-                    <span class="material-symbols-outlined">workspace_premium</span>
-                    <span>Desafios</span>
-                </a>
-                <a routerLink="/configuracoes" class="menu-item">
-                    <span class="material-symbols-outlined">settings</span>
-                    <span>Configurações</span>
-                </a>
-            </nav>
-        </aside>
 
-    <main class="content">
-        <div class="desafios-container">
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
 
-            <div class="titulo-sessao">
+        <nav class="sidebar-menu">
+
+            <a routerLink="/home" class="menu-item">
+                <span class="material-symbols-outlined">home</span>
+                <span>Início</span>
+            </a>
+
+            <a routerLink="/categorias" class="menu-item">
+                <span class="material-symbols-outlined">grid_view</span>
+                <span>Categorias</span>
+            </a>
+
+            <a routerLink="/meus-livros" class="menu-item">
+                <span class="material-symbols-outlined">book_2</span>
+                <span>Meus Livros</span>
+            </a>
+
+            <a routerLink="/perfil" class="menu-item active">
                 <span class="material-symbols-outlined">person</span>
-                <h2>Perfil</h2>
+                <span>Perfil</span>
+            </a>
+
+            <a routerLink="/desafios" class="menu-item">
+                <span class="material-symbols-outlined">workspace_premium</span>
+                <span>Desafios</span>
+            </a>
+
+            <a routerLink="/configuracoes" class="menu-item">
+                <span class="material-symbols-outlined">settings</span>
+                <span>Configurações</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- CONTEÚDO -->
+    <main class="content">
+
+        <!-- TÍTULO -->
+        <div class="titulo-sessao">
+
+            <span class="material-symbols-outlined">
+                person
+            </span>
+
+            <h2>Perfil</h2>
+
+        </div>
+
+
+        <!-- ÁREA DOS DOIS CARDS -->
+        <div class="perfil-layout">
+
+
+            <!-- CARD DO PERFIL -->
+            <div class="cartao-desafio-vazio">
+
+                <div class="avatar-container">
+                    <img
+                        src="img/belo.jpg"
+                        alt="Foto de Perfil do Usuario"
+                        class="avatar"
+                    >
+                </div>
+
+
+                <h2 class="name">
+                    Ryan Barros
+                </h2>
+
+
+                <!-- IDENTIFICAÇÃO -->
+                <div class="info-box">
+
+                    <h3 class="info-title">
+                        Identificação
+                    </h3>
+
+
+                    <div class="info-row">
+
+                        <span class="label">
+                            Data de Nascimento:
+                        </span>
+
+                        <span class="value">
+                            09/10/2006
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span class="label">
+                            Estado natal:
+                        </span>
+
+                        <span class="value">
+                            RJ
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span class="label">
+                            Naturalidade:
+                        </span>
+
+                        <span class="value">
+                            Brasileiro
+                        </span>
+
+                    </div>
+
+                </div>
+
             </div>
 
-    <div class="cartao-desafio-vazio">
-    <div class="avatar-container">
-        <img src="img/belo.jpg" alt="Foto de Perfil do Usuario" class="avatar" />
-    </div>
-    
-    <h2 class="name">Ryan Barros </h2>
 
-    <div class="info-box">
-        <h3 class="info-title">Identificação</h3>
-        
-        <div class="info-row">
-        <span class="label">Data de Nascimento:</span>
-        <span class="value">09/10/2006</span>
-        </div>
-        
-        <div class="info-row">
-        <span class="label">Estado natal:</span>
-        <span class="value">RJ</span>
-        </div>
-        
-        <div class="info-row">
-        <span class="label">Naturalidade:</span>
-        <span class="value">Brasileiro</span>
-        </div>
-  </div>
-            </div>
 
-        </div>
+            <!-- CARD DE CONTATO -->
+            <section class="cartao-contato">
 
-        <div class="cartao-contato">
-            
-                    <div class="info-con">
-                <span class="label">E-mail: </span>
-                <span class="value">Ryan@gmail.com</span>
-                </div>
 
-                <hr>
-
-                    <div class="info-con">
-                <span class="label">Telefone </span>
-                <span class="value">(21)40028922</span>
-                </div>
-                
-                <hr>
-
-                  <div class="info-con">
-                <span class="label">Endereço </span>
-                <span class="value">Catumbi - RJ </span>
+                <!-- CABEÇALHO -->
+                <div class="contato-header">
+                    Contato
                 </div>
 
 
+                <!-- EMAIL -->
+                <div class="contato-item">
+
+                    <span class="material-symbols-outlined contato-icon">
+                        mail
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            E-mail
+                        </strong>
+
+                        <span>
+                            Ryan@gmail.com
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TELEFONE -->
+                <div class="contato-item">
+
+                    <span class="material-symbols-outlined contato-icon">
+                        call
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Telefone
+                        </strong>
+
+                        <span>
+                            (21) 4002-8922
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ENDEREÇO -->
+                <div class="contato-item">
+
+                    <span class="material-symbols-outlined contato-icon">
+                        location_on
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Endereço
+                        </strong>
+
+                        <span>
+                            Catumbi - RJ
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BOTÃO -->
+                <button class="editar-btn">
+
+                    <span class="material-symbols-outlined">
+                        edit_square
+                    </span>
+
+                    Editar informação
+
+                </button>
+
+
+            </section>
+
 
         </div>
-
 
     </main>
+
 </div>
