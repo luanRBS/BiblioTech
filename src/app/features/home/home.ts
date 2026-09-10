@@ -1,14 +1,9 @@
-import { Component, inject } from '@angular/core';
-import { livrosService } from '../../core/services/livro.service';
+import { Component, inject, NgModule } from '@angular/core';
+import { livrosService, Livro } from '../../core/services/livro.service';
 import { ModalService } from '../../core/services/modal.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-interface Livro {
-  titulo: string;
-  autor: string;
-  imagem: string;
-}
 
 @Component({
   selector: 'app-home',
@@ -24,33 +19,7 @@ export class HomeComponent {
   livroService = inject(livrosService);
   modalService = inject(ModalService);
   
-  livros: Livro[] = [
-    { 
-      titulo: 'Inteligência Artificial', 
-      autor: 'Kai-Fu LEE',  
-      imagem: 'img/ia.jpg' 
-    },
-    { 
-      titulo: 'Entendendo Algoritmos', 
-      autor: 'Aditya Y. Bhargava', 
-      imagem: 'img/algoritmos.jpg' 
-    },
-    { 
-      titulo: 'Manual de DevOps', 
-      autor: 'John Allspaw', 
-      imagem: 'img/devops.jpg' 
-    },
-    { 
-      titulo: 'Tecnologia da Informação', 
-      autor: 'Harvard Business', 
-      imagem: 'img/ti.jpg' 
-    },
-    { 
-      titulo: 'Angular Framework', 
-      autor: 'Daniel Schmitz', 
-      imagem: 'img/angular.jpg' 
-    }
-  ];
+  livros = this.livroService.livros();
 
   get livrosFiltrados(): Livro[] {
     if (!this.termoBusca.trim()) {
@@ -58,7 +27,7 @@ export class HomeComponent {
     }
     const termo = this.termoBusca.toLowerCase();
     return this.livros.filter(l => 
-      l.titulo.toLowerCase().includes(termo) || 
+      l.nome.toLowerCase().includes(termo) || 
       l.autor.toLowerCase().includes(termo)
     );
   }
@@ -70,11 +39,15 @@ export class HomeComponent {
   esconderResultados() {
     setTimeout(() => {
       this.mostrarResultados = false;
-    }, 200);
-  }
+    }, 200);}
+
+    esconderResultadosClick(): void{
+      this.mostrarResultados = false;
+    }
+
 
   selecionarLivro(livro: Livro) {
-    this.termoBusca = livro.titulo;
+    this.termoBusca = livro.nome;
     this.mostrarResultados = false;
   }
 }

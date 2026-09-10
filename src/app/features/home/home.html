@@ -15,6 +15,7 @@
       [(ngModel)]="termoBusca"
       (focus)="exibirResultados()"
       (blur)="esconderResultados()"
+      (keydown.escape)="esconderResultadosClick()"
     />
     <label for="searchInput">
       <span class="material-symbols-outlined">search</span>
@@ -26,9 +27,9 @@
         *ngFor="let livro of livrosFiltrados"
         (click)="selecionarLivro(livro)"
       >
-        <img [src]="livro.imagem" [alt]="livro.titulo">
+        <img [src]="livro.image" [alt]="livro.nome">
         <div class="search-item-info">
-          <strong>{{ livro.titulo }}</strong>
+          <strong>{{ livro.nome }}</strong>
           <small>{{ livro.autor }}</small>
         </div>
       </div>
