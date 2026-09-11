@@ -18,6 +18,11 @@ export class ModalService {
     this.livroSelecionado.set(livro);
     this.modalAberto.set(true);
   }
+
+  // função criada para poder ser usada no componente do ADMIN
+  abriModal(){
+    this.modalAberto.set(true);
+  }
   
   fecharModal() {
     this.modalAberto.set(false);

@@ -119,13 +119,13 @@
                         <span class="modal-autor">{{ modalService.livro()?.autor }}</span>
 
                         <div class="modal-dados">
-                          @if(modalService.livro()?.reserva === false){
+                          @if(modalService.livro()?.reserva === true){
                             <span><strong>Devolução:</strong> {{ modalService.livro()?.devolucao }}</span>
                           }
                           <div class="status-container">
                             <strong>Status:</strong> 
                             <span class="status-badge">
-                              @if(modalService.livro()?.reserva === false){
+                              @if(modalService.livro()?.reserva === true){
                                 <p class="status-emprestado">Emprestado</p>
                               } @else {
                                 <p class="status-livre">Livre</p>

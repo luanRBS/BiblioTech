@@ -1,20 +1,42 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './features/login/login';
-import { HomeComponent } from './features/home/home';
-import { ConfiguracoesComponent } from './features/configuracoes/configuracoes';
-import { CategoriasComponent } from './features/categorias/categorias';
-import { MeusLivrosComponent } from './features/meus-livros/meus-livros';
-import { PerfilComponent } from './features/perfil/perfil';
-import { DesafiosComponent } from './features/desafios/desafios';
 
-
-export const routes: Routes=[
-    {path: '', redirectTo: '/login', pathMatch: 'full'},
-    {path: 'login', component: LoginComponent },
-    {path: 'home', component: HomeComponent },
-    {path: 'configuracoes', component: ConfiguracoesComponent },
-    {path: 'categorias', component: CategoriasComponent},
-    {path: 'meus-livros', component: MeusLivrosComponent},
-    {path: 'perfil', component: PerfilComponent},
-    {path: 'desafios', component: DesafiosComponent}
+export const routes: Routes = [
+  // 1. Redirecionamento inicial padrão
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./features/login/login').then(l=> l.LoginComponent)
+  }, 
+  {
+    path: 'home',
+    loadComponent: () => import('./features/home/home').then(h => h.HomeComponent)
+  },
+  {
+    path: 'meus-livros',
+    loadComponent: () => import('./features/meus-livros/meus-livros').then(m => m.MeusLivrosComponent)
+  },
+  {
+    path: 'perfil',
+    loadComponent: () => import('./features/perfil/perfil').then(p => p.PerfilComponent)
+  },
+  {
+    path: 'categorias',
+    loadComponent: () => import('./features/categorias/categorias').then(c => c.CategoriasComponent)
+  },  
+  {
+    path: 'desafios',
+    loadComponent: () => import('./features/desafios/desafios').then(d => d.DesafiosComponent)
+  },
+  {
+    path: 'configuracoes',
+    loadComponent: () => import('./features/configuracoes/configuracoes').then(co => co.ConfiguracoesComponent)
+  },
+  {
+    path: 'ADM',
+     loadComponent: () => import('./features/admin/admin/admin').then(ad=> ad.AdminComponent)
+  }
 ];

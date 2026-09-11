@@ -13,16 +13,16 @@
 
         <div class="input-grupo">
             <label for="matricula">Matricula:</label>
-            <input type="text" id="matricula" placeholder="Digite a sua matricula">
+            <input #matriculaInput type="text" id="matricula" placeholder="Digite a sua matricula">
         </div>
 
         <div class="input-grupo">
             <label for="senha">Senha:</label>
-            <input type="password" id="senha" placeholder="Digite a sua senha">
+            <input #senhaInput type="password" id="senha" placeholder="Digite a sua senha">
         </div>
 
         <a href="#" class="forgot-password">Esqueci Minha Senha</a>
-        <button type="button" class="btn-entrar" (click)="entrar()">Entrar</button>
+        <button type="button" class="btn-entrar" (click)="entrar(matriculaInput.value, senhaInput.value)">Entrar</button>
     </div>
 </section>
 
