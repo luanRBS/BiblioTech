@@ -60,11 +60,12 @@ body {
     justify-content: center;
 }
 
-.modal-info-detalhe h2 { font-size: 26px; 
+.modal-info-detalhe h2 { font-size: 18px; 
     color: #000; 
     margin: 0 0 5px 0; 
+    margin-bottom: 15px;
 
-    margin-bottom: 200px;
+    
 }
 .modal-autor { 
     font-size: 16px !important; 

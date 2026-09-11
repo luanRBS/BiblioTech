@@ -60,7 +60,7 @@
                 <h3 class="nome-categoria">Tecnologia & Programação</h3>
                 <div class="livros-grid">
                     @for (Livro of categoriaFiltrar('Tecnologia & Programação'); track Livro.nome) {
-                        <div class="card-livro">
+                        <div class="card-livro" (click)="modalService.abrirModalLivro(Livro)">
                             <div class="capa-container">
                                 <img [src]="Livro.image" [alt]="Livro.nome" class="capa-livro">
                             </div>
@@ -76,7 +76,7 @@
                 <h3 class="nome-categoria">Devops & Infraestrutura</h3>
                 <div class="livros-grid">
                     @for (Livro of categoriaFiltrar('Devops & Infraestrutura'); track Livro.nome) {
-                        <div class="card-livro">
+                        <div class="card-livro" (click)="modalService.abrirModalLivro(Livro)">
                             <div class="capa-container">
                                 <img [src]="Livro.image" [alt]="Livro.nome" class="capa-livro">
                             </div>
@@ -92,7 +92,7 @@
                 <h3 class="nome-categoria">Inteligência Artificial</h3>
                 <div class="livros-grid">
                     @for (Livro of categoriaFiltrar('Inteligência Artificial'); track Livro.nome) {
-                        <div class="card-livro">
+                        <div class="card-livro" (click)="modalService.abrirModalLivro(Livro)">
                             <div class="capa-container">
                                 <img [src]="Livro.image" [alt]="Livro.nome" class="capa-livro">
                             </div>
@@ -102,5 +102,41 @@
                 </div>
             </div>
         </div>
+
+               <!-- MODAL -->
+              @if (modalService.isOpen()) {
+                <section class="modal-overlay">
+                  <div class="modal-card" (click)="$event.stopPropagation()">
+                    <button class="btn-fechar" (click)="modalService.fecharModal()">
+                      <span class="material-symbols-outlined">close</span>
+                    </button>
+                  
+                    <div class="modal-content">
+                      <img [src]="modalService.livro()?.image" alt="Capa" class="modal-img">
+                    
+                      <div class="modal-info-detalhe">
+                        <h2>{{ modalService.livro()?.nome }}</h2>
+                        <span class="modal-autor">{{ modalService.livro()?.autor }}</span>
+
+                        <div class="modal-dados">
+                          @if(modalService.livro()?.reserva === false){
+                            <span><strong>Devolução:</strong> {{ modalService.livro()?.devolucao }}</span>
+                          }
+                          <div class="status-container">
+                            <strong>Status:</strong> 
+                            <span class="status-badge">
+                              @if(modalService.livro()?.reserva === false){
+                                <p class="status-emprestado">Emprestado</p>
+                              } @else {
+                                <p class="status-livre">Livre</p>
+                              }
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              }
     
 </div>
