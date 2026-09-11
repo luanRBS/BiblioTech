@@ -28,10 +28,6 @@ export const routes: Routes = [
     loadComponent: () => import('./features/categorias/categorias').then(c => c.CategoriasComponent)
   },  
   {
-    path: 'desafios',
-    loadComponent: () => import('./features/desafios/desafios').then(d => d.DesafiosComponent)
-  },
-  {
     path: 'configuracoes',
     loadComponent: () => import('./features/configuracoes/configuracoes').then(co => co.ConfiguracoesComponent)
   },
